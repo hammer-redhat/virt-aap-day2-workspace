@@ -1,0 +1,13 @@
+---
+- name: Hot plug VM instance type
+  hosts: all
+  tasks:
+    - name: Swap Instance Type to add more Resources
+      redhat.openshift_virtualization.kubevirt_vm: 
+        name: "{{ vm_name }}" 
+        namespace: "{{ vm_namespace }}" 
+        state: present 
+        run_strategy: RestartOnError 
+        instancetype: 
+          name: "{{ instance_type }}" 
+          revisionName: ""
