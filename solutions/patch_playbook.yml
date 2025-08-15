@@ -1,9 +1,8 @@
 ---
 - name: Patch Virtual Machines
-  hosts: all
+  hosts: "{{ vm_namespace }}-{{ vm_name }}"
   roles:
 #    - redhatone.vm_management.rhsm_subscription
-    - redhatone.vm_management.vm_management
+    - role: redhatone.vm_management.vm_management
       vars:
-        - vm_name: "{{ vm_name }}"
-        - vm_namespace: "{{ vm_namespace }}"
+        vm_namespace: "{{ vm_namespace }}"
